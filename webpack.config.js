@@ -1,25 +1,30 @@
-var path = require('path');
+'use strict';
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  context: __dirname + '/src',
+
+  entry: [
+    'webpack/hot/dev-server',
+    './index.js'
+  ],
 
   output: {
-    path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js'
+    path: __dirname + '/build',
+    filename: 'index.js',
+    publicPath: ''
   },
 
   module: {
     loaders: [
       {
-        test: /src\/.js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel']
+        loaders: ["babel?presets[]=react"]
       },
       {
-        test: /src\/.jsx$/,
-        exclude: /node_modules/,
-        loaders: ['babel']
-      }
+        test: /\.html$/,
+        loaders: ["html"]
+      },
     ]
   }
 };
