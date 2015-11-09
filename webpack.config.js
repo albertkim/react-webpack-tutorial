@@ -1,11 +1,9 @@
 'use strict';
 
 module.exports = {
-  context: __dirname + '/src',
-
   entry: [
     'webpack/hot/dev-server',
-    './index.js'
+    './src/index.js'
   ],
 
   output: {
@@ -25,6 +23,10 @@ module.exports = {
         test: /\.html$/,
         loaders: ["html"]
       },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      }
     ]
   }
 };
