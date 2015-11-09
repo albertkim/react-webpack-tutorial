@@ -2,9 +2,15 @@ import React from 'react';
 
 let TodoList = React.createClass({
   render() {
-    return(
+    var todoList = this.props.data.map(function(todo) {
+      return (
+        <div>{ todo.text }</div>
+      );
+    });
+
+    return (
       <div>
-        List
+        {todoList}
       </div>
     );
   }
